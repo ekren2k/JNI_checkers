@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -13,6 +12,7 @@ public class InputHandler implements KeyListener, MouseListener {
     private int selectedY = -1;
     public InputHandler(GamePanel gp) {
         this.gp = gp;
+        //initial selection
         cellX = -1;
         cellY = -1;
     }
@@ -24,7 +24,7 @@ public class InputHandler implements KeyListener, MouseListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (cellX == -1 && cellY == -1) {
-            cellX = 5;
+            cellX = 1;
             cellY = 1;
             passCellXY(cellX, cellY);
         }
@@ -87,8 +87,8 @@ public class InputHandler implements KeyListener, MouseListener {
     public void mouseExited(MouseEvent e) {
 
     }
-    public static native void passCellXY(int cellX, int cellY);
 
+    public static native void passCellXY(int cellX, int cellY);
     public static native boolean selectFigure(int cellX, int cellY);
     public static native boolean moveFigure(int selectedX, int selectedY, int cellX, int cellY);
 

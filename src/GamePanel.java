@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.util.Arrays;
 
 public class GamePanel extends JPanel {
     InputHandler ih;
@@ -49,16 +47,16 @@ public class GamePanel extends JPanel {
         for (int i = 0; i < Constants.COLUMNS; i++) {
             for (int j = 0; j < Constants.ROWS; j++) {
                 switch(getFigureFromArray(i, j)) {
-                    case 0, 1 -> drawEmptyCell(g2, i, j, padding);
+                    case 0, 1 -> drawEmptyCell(g2, i, j);
                     case 2 -> drawBlackFigure(g2, i, j, padding);
                     case 3 -> drawWhiteFigure(g2, i, j, padding);
                     case 4 -> {
                         drawWhiteFigure(g2, i, j, padding);
-                        drawSelection(g2, i, j, padding);
+                        drawSelection(g2, i, j);
                     }
                     case 5 -> {
                         drawBlackFigure(g2, i, j, padding);
-                        drawSelection(g2, i, j, padding);
+                        drawSelection(g2, i, j);
                     }
                 }
 
@@ -77,12 +75,12 @@ public class GamePanel extends JPanel {
         g2.fillOval(j* Constants.CELL_SIZE+padding, i* Constants.CELL_SIZE+padding,
                 Constants.CELL_SIZE-(2*padding), Constants.CELL_SIZE-(2*padding));
     }
-    private static void drawEmptyCell(Graphics2D g2, int i, int j, int padding) {
+    private static void drawEmptyCell(Graphics2D g2, int i, int j) {
         g2.setColor(Constants.transparentColor);
         g2.drawRect(j* Constants.CELL_SIZE, i* Constants.CELL_SIZE, Constants.CELL_SIZE, Constants.CELL_SIZE);
 
     }
-    private static void drawSelection(Graphics2D g2, int i, int j, int padding) {
+    private static void drawSelection(Graphics2D g2, int i, int j) {
         g2.setStroke(new BasicStroke(3f));
         g2.setColor(Constants.selectionColor);
         g2.drawRect(j*Constants.CELL_SIZE, i*Constants.CELL_SIZE, Constants.CELL_SIZE, Constants.CELL_SIZE);
